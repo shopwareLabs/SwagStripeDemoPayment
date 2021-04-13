@@ -19,6 +19,10 @@ services:
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
+    App\ArgumentResolver\:
+        resource: '../src/ArgumentResolver'
+        tags: ['controller.argument_value_resolver']
+
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
