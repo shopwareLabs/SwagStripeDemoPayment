@@ -14,7 +14,7 @@
     </meta>
 
     <setup>
-        <registrationUrl>http://stripe/registration</registrationUrl> <!-- replace local url with real one -->
+        <registrationUrl>http://stripe/registration</registrationUrl><!-- replace local url with real one -->
         <secret>myAppSecret</secret>
     </setup>
 
