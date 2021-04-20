@@ -9,7 +9,7 @@
         <description lang="de-DE">Beispiel App - Nicht im Produktivbetrieb verwenden</description>
         <author>shopware AG</author>
         <copyright>(c) by shopware AG</copyright>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <license>MIT</license>
     </meta>
 
@@ -36,6 +36,7 @@
         <create>sales_channel_payment_method</create>
         <delete>sales_channel_payment_method</delete>
         <read>payment_method</read>
+        <read>app_payment_method</read>
         <read>order_transaction</read>
     </permissions>
 
