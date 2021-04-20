@@ -5,7 +5,7 @@
 name: app
 
 # The type of the application to build.
-type: php:7.3
+type: php:7.4
 build:
     flavor: composer
 
@@ -13,7 +13,7 @@ variables:
     env:
         # Tell Symfony to always install in production-mode.
         APP_ENV: 'env'
-        APP_NAME: myAppName
+        APP_NAME: SwagStripeDemoPayment
         APP_SECRET: myAppSecret
         APP_DEBUG: 0
         DATABASE_URL: mysql://user:@database.internal:3306/main

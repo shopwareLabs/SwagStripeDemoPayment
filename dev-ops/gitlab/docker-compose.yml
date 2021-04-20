@@ -20,13 +20,15 @@ services:
     volumes:
       - "../development:/app"
       - ~/.composer:/.composer
+    environment:
+      FEATURE_NEXT_14357: 1
     tmpfs:
       - /tmp:mode=1777
 
-  example_app_server:
+  stripe_app_server:
     image: shopware/development:7.4-composer-2
     volumes:
-      - "../../../shopwareapptemplate:/app"
+      - "../..:/app"
       - "~/.composer:/.composer"
     environment:
       CONTAINER_UID: 1000
@@ -39,9 +41,9 @@ services:
       appSystem:
       development:
         aliases:
-          - example
+          - stripe
 
-  example_mysql:
+  stripe_mysql:
     build: dev-ops/docker/containers/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -50,7 +52,7 @@ services:
     ports:
       - "5506:3306"
     volumes:
-      - ./dev-ops/docker/_volumes/mysql-example:/mysql-data
+      - ./dev-ops/docker/_volumes/mysql-stripe:/mysql-data
     networks:
       appSystem:
         aliases:

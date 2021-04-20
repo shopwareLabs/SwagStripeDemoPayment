@@ -2,6 +2,7 @@
 
 namespace App\Tests\E2E\Traits;
 
+use App\Repository\OrderRepository;
 use App\Repository\ShopRepository;
 use App\SwagAppsystem\Client;
 use App\SwagAppsystem\Credentials;
@@ -39,6 +40,11 @@ trait E2ETestTrait
      * @var ShopRepository
      */
     private $shopRepository;
+
+    /**
+     * @var OrderRepository
+     */
+    private $orderRepository;
 
     protected function getCredentials(): Credentials
     {
@@ -90,6 +96,17 @@ trait E2ETestTrait
         $this->client = Client::fromCredentials($this->getCredentials());
 
         return $this->client;
+    }
+
+    protected function getOrderRepository(): OrderRepository
+    {
+        if ($this->orderRepository) {
+            return $this->orderRepository;
+        }
+
+        $this->orderRepository = new OrderRepository($this->getConnection());
+
+        return $this->orderRepository;
     }
 
     protected function getShopRepository(): ShopRepository

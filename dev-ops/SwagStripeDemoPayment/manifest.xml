@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/Framework/App/Manifest/Schema/manifest-1.0.xsd">
+    <meta>
+        <name>SwagStripeDemoPayment</name>
+        <label>Swag Stripe Demo Payment</label>
+        <label lang="de-DE">Swag Stripe Demo Payment</label>
+        <description>Example App - Do not use in production</description>
+        <description lang="de-DE">Beispiel App - Nicht im Produktivbetrieb verwenden</description>
+        <author>shopware AG</author>
+        <copyright>(c) by shopware AG</copyright>
+        <version>1.0.0</version>
+        <license>MIT</license>
+    </meta>
+
+    <setup>
+        <registrationUrl>http://stripe/registration</registrationUrl> <!-- replace local url with real one -->
+        <secret>myAppSecret</secret>
+    </setup>
+
+    <!-- permissions only needed for tests -->
+    <permissions>
+        <create>product</create>
+        <update>product</update>
+        <delete>product</delete>
+        <create>product_visibility</create>
+        <read>tax</read>
+        <read>currency</read>
+        <read>language</read>
+        <read>snippet_set</read>
+        <read>country</read>
+        <read>salutation</read>
+        <read>sales_channel</read>
+        <update>sales_channel</update>
+        <create>sales_channel_domain</create>
+        <create>sales_channel_payment_method</create>
+        <delete>sales_channel_payment_method</delete>
+        <read>payment_method</read>
+        <read>order_transaction</read>
+    </permissions>
+
+    <payments>
+        <payment-method>
+            <identifier>stripe</identifier>
+            <name>Stripe payment</name>
+            <name lang="de-DE">Zahlen mit Stripe</name>
+            <description>This payment will be handled with Stripe - Do not use in production</description>
+            <description lang="de-DE">Diese Zahlung wird mit Stripe durchgeführt - Nicht im Produktivbetrieb verwenden</description>
+            <pay-url>http://stripe/payment/process</pay-url>
+            <finalize-url>http://stripe/payment/finalize</finalize-url>
+        </payment-method>
+    </payments>
+</manifest>

@@ -17,45 +17,15 @@
         <secret>{{ APP_SECRET }}</secret>
     </setup>
 
-    <admin>
-        <action-button action="addOrderList" entity="order" view="detail" url="{{ APP_URL_BACKEND }}/actionbutton/add/orderlist">
-            <label>Add order list</label>
-            <label lang="de-DE">Bestellliste hinzufügen</label>
-        </action-button>
-
-        <module name="orderList" source="{{ APP_URL_CLIENT }}/iframe/orderlist">
-            <label>Order list</label>
-            <label lang="de-DE">Bestellliste</label>
-        </module>
-    </admin>
-
-    <permissions>
-        <create>state_machine_history</create>
-        <read>order</read>
-        <update>order</update>
-        <read>order_line_item</read>
-        <read>state_machine_state</read>
-    </permissions>
-
-    <custom-fields>
-        <custom-field-set>
-            <name>swag_orderlist</name>
-            <label>Order list</label>
-            <related-entities>
-                <order/>
-            </related-entities>
-            <fields>
-                <text-area name="order-list">
-                    <position>1</position>
-                    <label>Order list</label>
-                    <label lang="de-DE">Bestellliste</label>
-                </text-area>
-            </fields>
-        </custom-field-set>
-    </custom-fields>
-
-    <webhooks>
-        <webhook name="checkoutOrderPlaced" url="{{ APP_URL_BACKEND }}/hooks/order/placed" event="checkout.order.placed"/>
-        <webhook name="appLifecycleDeleted" url="{{ APP_URL_BACKEND }}/applifecycle/deleted" event="app.deleted"/>
-    </webhooks>
+    <payments>
+        <payment-method>
+            <identifier>stripe</identifier>
+            <name>Stripe payment</name>
+            <name lang="de-DE">Zahlen mit Stripe</name>
+            <description>This payment will be handled with Stripe - Do not use in production</description>
+            <description lang="de-DE">Diese Zahlung wird mit Stripe durchgeführt - Nicht im Produktivbetrieb verwenden</description>
+            <pay-url>{{ APP_URL_BACKEND }}/payment/process</pay-url>
+            <finalize-url>{{ APP_URL_BACKEND }}/payment/finalize</finalize-url>
+        </payment-method>
+    </payments>
 </manifest>
