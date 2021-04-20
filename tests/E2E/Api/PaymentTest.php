@@ -99,8 +99,13 @@ class PaymentTest extends TestCase
             'filter' => [
                 [
                     'type' => 'equals',
-                    'field' => 'handlerIdentifier',
-                    'value' => 'app\\SwagStripeDemoPayment_stripe',
+                    'field' => 'appPaymentMethod.appName',
+                    'value' => 'SwagStripeDemoPayment',
+                ],
+                [
+                    'type' => 'equals',
+                    'field' => 'appPaymentMethod.identifier',
+                    'value' => 'stripe',
                 ],
             ],
         ])['data'][0] ?? '';
